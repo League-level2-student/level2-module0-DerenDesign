@@ -20,7 +20,7 @@ public class _00_ArrayCheatSheet {
 		}
 		
 		//6. make an array of 50 integers
-		int []a = new int[50];
+		int [] a = new int[50];
 		Random ran = new Random();
 		int lowRange = 0;
 		int highRange = 0;

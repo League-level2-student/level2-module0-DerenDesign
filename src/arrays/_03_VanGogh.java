@@ -6,37 +6,37 @@ import processing.core.PImage;
  * Goal: Create a program to paint some Van Gogh paintings!
  * 
  * In this class:
- * 1. Declare a PImage array variable as a member variable in this class.
+ * Declare a PImage array variable as a member variable in this class.
  *    DO NOT initialize it.
- * 
- * 2. In the initializePaintings() method, initialize the PImage array to
+ * 	  
+ *  In the initializePaintings() method, initialize the PImage array to
  *    contain 4 images.
  * 
- * 3. Use the loadImage() method to assign each of the 4 images in the /images
+ *  Use the loadImage() method to assign each of the 4 images in the /images
  *    folder to an index in the PImage array
  *    "starryNight.jpg", "strawHatPortrait.jpg",
  *    "wheatField.jpg", "painterOnRoad.jpg"
  * 
- * 4. Declare a member variable to keep track of the current image index from the
+ *  Declare a member variable to keep track of the current image index from the
  *    array. This variable will indicate which image to display from the array.
  * 
- * 5. In the initializePaintings() method, initialize the variable to 0
+ * . In the initializePaintings() method, initialize the variable to 0
  *    so the first painting to select is the first one in the array.
  * 
- * 6. Call the setNewPainting() method from the brush object and pass in
+ * . Call the setNewPainting() method from the brush object and pass in
  *    the current painting as an input variable. It should be similar to this:
  *    brush.setNewPainting(paintings[currentIndex]);
  * 
- * 7. Run the program. You should be able to paint with your brush when
+ *. Run the program. You should be able to paint with your brush when
  *    pressing the mouse and dragging. The paint will be thicker the faster
  *    the mouse moves and more detailed when moving the mouse slowly.
  *    Press 'r' to remove all the paint from the canvas and start over.
  * 
- * 8. In the selectNextPainting() method, increase the image index variable
+ * . In the selectNextPainting() method, increase the image index variable
  *    by 1. Add code to make sure the index variable is never larger than the
  *    size of the painting array and wraps back to the first painting.
  * 
- * 9. Call the setNewPainting() method from the brush object similar to step 6.
+ *  Call the setNewPainting() method from the brush object similar to step 6.
  * 
  * 10.Run the program. Press the spacebar to move to the next painting.
  *    Make sure that pressing the spacebar on the fourth painting returns
@@ -50,18 +50,32 @@ public class _03_VanGogh extends PApplet {
     PImage canvas;
     PImage paintbrushCursor;
     boolean initializeCanvas = true;
+    int currentImage;
     
     /*
      * Write your code below
      */
+    PImage[] images;
+  
     Brush brush;
     
     void initializePaintings() {
-        
+    images = new PImage[4];
+    images [0] = loadImage("starryNight.jpg");
+    images [1] = loadImage("strawHatPortrait.jpg");
+    images [2] = loadImage("wheatField.jpg");
+    images [3] = loadImage("painterOnRoad.jpg");
+    currentImage = 0;
+    brush.setNewPainting(images[currentImage]);
+       
     }
     
     void selectNextPainting() {
-        
+        currentImage+=1;
+        if(currentImage == 4) {
+        	currentImage = 0;
+        }
+        brush.setNewPainting(images[currentImage]);
     }
 
     @Override
